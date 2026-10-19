@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#8ecff6">
+  <meta name="description" content="The thinking and assumptions behind the Waggy Tails / TailRoster dog daycare software concept.">
+  <title>Behind the Build | Waggy Tails</title>
+  <style>
+    :root { --ink: #21485f; --muted:#58778a; --blue:#8ecff6; --pale:#eaf7ff; --line:#d7eaf5; --white:#fff; }
+    * {box-sizing: border-box}
+    body {margin:0; color:var(--ink); background:#f7fcff; font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .shell {width:min(900px, calc(100% - 36px)); margin-inline:auto}
+    header {background:linear-gradient(135deg,#a7dcfb,#67b9ea); color:#fff; padding:28px 0 70px}
+    header .top {display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap}
+    .brand {font-size:22px; font-weight:900; letter-spacing:-.04em; color:white; text-decoration:none}
+    .pill {display:inline-block; background:rgba(255,255,255,.9); color:#195d90; border-radius:999px; padding:8px 14px; text-decoration:none; font-size:14px; font-weight:750}
+    h1 {font-size:clamp(32px,6vw,52px); line-height:1.1; letter-spacing:-.045em; margin:42px 0 12px}
+    header p {max-width:650px; font-size:18px; margin:0}
+    main {margin-top:-36px; position:relative; padding-bottom:30px}
+    section {background:white; padding:27px 30px; border:1px solid var(--line); border-radius:20px; margin-bottom:18px; box-shadow:0 8px 22px rgba(36,95,132,.045)}
+    h2 {font-size:23px; letter-spacing:-.03em; margin:0 0 9px}
+    p {margin:0 0 12px}
+    p:last-child {margin-bottom:0}
+    ul {margin:8px 0 0; padding-left:23px}
+    li {margin:5px 0}
+    .eyebrow {font-size:12px; font-weight:850; letter-spacing:.1em; text-transform:uppercase; color:#2c82c1; margin-bottom:6px}
+    .note {padding:14px 17px; border-radius:13px; background:var(--pale); color:#28546c; margin-top:17px; font-size:14px}
+    .actions {display:flex; flex-wrap:wrap; gap:10px; margin:25px 0 30px}
+    .action {background:#2c82c1; color:white; border-radius:12px; padding:11px 18px; text-decoration:none; font-weight:750}
+    .action.alt {background:white; color:#195d90; border:1px solid #bbdced}
+    footer {border-top:1px solid var(--line); color:var(--muted); font-size:13px; padding:22px 0 35px}
+    @media(max-width:600px){section{padding:22px 20px}header{padding-bottom:62px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <div class="top">
+        <a class="brand" href="./">TailRoster <span aria-hidden="true">🐾</span></a>
+        <a class="pill" href="./">← Back to landing page</a>
+      </div>
+      <h1>Behind the build <span aria-hidden="true">🐶</span></h1>
+      <p>Working notes on the original idea, prototype, assumptions and questions still to test.</p>
+    </div>
+  </header>
+  <main class="shell">
+    <section>
+      <div class="eyebrow">01 · The starting hunch</div>
+      <h2>Small dog daycares need a simpler day-to-day system</h2>
+      <p>The original idea is that independent dog daycares could benefit from one straightforward place to manage bookings, keep dog parents updated and track the vaccination status of dogs attending daycare.</p>
+      <p>If it removes time spent juggling WhatsApp messages, diaries and paperwork, a business may be willing to pay a monthly subscription for it. This is a hypothesis to test, rather than a proven demand.</p>
+    </section>
+    <section>
+      <div class="eyebrow">02 · Who it's for</div>
+      <h2>Independent daycares, not big chains</h2>
+      <p>The initial audience is smaller, owner-operated dog daycares in Ireland, particularly teams looking after around 20–50 dogs a day.</p>
+      <ul>
+        <li>Booking requests arrive through different channels.</li>
+        <li>Staff need to know how many spaces are left each day.</li>
+        <li>Vaccination dates should be easy to check before check-in.</li>
+        <li>Dog parents appreciate a simple update about the dog's day.</li>
+      </ul>
+    </section>
+    <section>
+      <div class="eyebrow">03 · The proposed solution</div>
+      <h2>One calm, practical daycare desk</h2>
+      <p>The product concept brings together bookings and capacity, visible vaccination status, check-in and quick activity updates such as Ate, Walked, Played and Napped. An owner-facing update, called a “Pupdate,” is part of the longer-term vision.</p>
+      <p>The objective is to make everyday tasks quick enough for busy daycare staff to complete on a phone.</p>
+    </section>
+    <section>
+      <div class="eyebrow">04 · Pricing assumption</div>
+      <h2>Could daycares pay €50–€80 a month?</h2>
+      <p>The original estimate was that businesses might pay roughly €50–€80 per month, possibly alongside a one-off joining or setup fee. The landing-page example uses €59 per month and a €149 setup fee.</p>
+      <div class="note"><strong>Important:</strong> These are proposed prices only. No customer interviews, paid subscriptions or willingness-to-pay tests are being claimed.</div>
+    </section>
+    <section>
+      <div class="eyebrow">05 · What the demo actually does</div>
+      <h2>A working browser prototype, not a live service</h2>
+      <ul>
+        <li>Displays sample dog bookings and remaining daily places.</li>
+        <li>Flags vaccinations as in-date, expiring soon or expired.</li>
+        <li>Allows simulated check-ins and one-tap activity notes.</li>
+        <li>Shows a preview of an individual dog's update.</li>
+      </ul>
+      <p>It uses invented data and saves changes in the current browser. It does not connect to real customer accounts, send owner notifications, collect secure medical documents or process payments. The landing-page waiting-list form is a demonstration and does not submit data.</p>
+    </section>
+    <section>
+      <div class="eyebrow">06 · What to test next</div>
+      <h2>Validate the problem before building further</h2>
+      <ul>
+        <li>Speak to independent dog daycare owners about how they currently book and check dogs in.</li>
+        <li>Find out where time is lost and which jobs cause the most mistakes.</li>
+        <li>Ask which features they would use every day and which are unnecessary.</li>
+        <li>Test whether €50–€80 monthly and a joining fee feel worthwhile.</li>
+        <li>Before storing real dog/owner records, plan privacy, security, permissions and data retention appropriately.</li>
+      </ul>
+    </section>
+    <div class="actions">
+      <a class="action" href="https://laurenbacon122g.github.io/Waggy-Tails-Demo/">Try the demo ↗</a>
+      <a class="action alt" href="./">Back to landing page</a>
+    </div>
+  </main>
+  <footer><div class="shell">Waggy Tails / TailRoster · Product concept and working assumptions · No live customers claimed</div></footer>
+</body>
+</html>
