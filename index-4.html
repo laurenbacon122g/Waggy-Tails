@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#8ecff6">
+  <title>TailRoster | Dog daycare, without the booking chaos</title>
+  <style>
+    :root{
+      --bg:#f7fcff;
+      --card:#ffffff;
+      --text:#21485f;
+      --muted:#667f8f;
+      --line:#d7eaf5;
+      --blue-1:#eaf7ff;
+      --blue-2:#cfeeff;
+      --blue-3:#8ecff6;
+      --blue-4:#65b8ea;
+      --blue-5:#2c82c1;
+      --blue-6:#195d90;
+      --yellow:#fff2c7;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text)}
+    a{color:inherit}
+    .wrap{max-width:1060px;margin:auto;padding:20px}
+    .hero{
+      background:linear-gradient(135deg,#a7dcfb 0%,#84cdf7 45%,#67b9ea 100%);
+      color:#fff;
+      padding:22px 0 50px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:after{
+      content:"";position:absolute;inset:auto -80px -120px auto;width:260px;height:260px;border-radius:50%;
+      background:rgba(255,255,255,.12);filter:blur(2px)
+    }
+    .head{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
+    .brand{font-size:24px;font-weight:900;letter-spacing:-.05em}
+    .brand span{color:#fffbe9}
+    .head a{font-weight:800;font-size:14px;text-decoration:none;padding:9px 13px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.1)}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:center;position:relative;z-index:1;margin-top:30px}
+    .kicker{font-size:13px;letter-spacing:.13em;font-weight:850;text-transform:uppercase;color:#f0fbff}
+    h1{font-size:clamp(36px,8vw,68px);line-height:1.05;letter-spacing:-.055em;max-width:750px;margin:18px 0 16px}
+    h2{font-size:clamp(26px,5vw,40px);letter-spacing:-.045em;line-height:1.12;margin:0 0 10px}
+    h3{margin:16px 0 8px;font-size:21px}
+    p{line-height:1.6}
+    .lead{max-width:610px;color:#effaff;font-size:19px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+    .btn{display:inline-block;border:0;border-radius:14px;padding:15px 21px;text-decoration:none;font-size:16px;font-weight:850;cursor:pointer}
+    .accent{background:#fffef9;color:var(--blue-6);box-shadow:0 10px 22px rgba(31,87,125,.12)}
+    .line{border:1px solid rgba(255,255,255,.45);color:#fff;background:rgba(255,255,255,.08)}
+    .disclaimer{font-size:13px;color:#edfaff}
+    .hero-card{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:28px;padding:18px;backdrop-filter:blur(4px);box-shadow:0 18px 38px rgba(22,78,116,.16)}
+    .dog-illu{display:block;width:100%;max-width:270px;margin:0 auto 12px}
+    .hero-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+    .badge{background:rgba(255,255,255,.75);color:var(--blue-6);border-radius:999px;padding:8px 11px;font-size:12px;font-weight:800}
+    .section{padding:48px 0}
+    .eyeblue{color:var(--blue-5)}
+    .intro{max-width:620px;color:var(--muted)}
+    .quote{background:#fff9e8;border-left:5px solid #efc56c;border-radius:0 16px 16px 0;padding:21px;margin:20px 0;max-width:700px;font-size:20px;line-height:1.5}
+    .caption{font-size:12px;color:#6d8391}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 10px 24px rgba(36,95,132,.04)}
+    .num{height:38px;width:38px;border-radius:50%;display:grid;place-items:center;background:var(--blue-1);font-weight:900;color:var(--blue-6)}
+    .pets-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .pet-chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:700;color:var(--blue-6)}
+    .price{background:linear-gradient(180deg,#f4fbff 0%,#e9f7ff 100%);border:1px solid var(--line);border-radius:24px;padding:28px;max-width:680px;box-shadow:0 12px 25px rgba(36,95,132,.05)}
+    .price strong{font-size:42px;letter-spacing:-.05em}
+    .price .tag{font-size:13px;font-weight:900;color:var(--blue-5);text-transform:uppercase}
+    .formbox{background:linear-gradient(135deg,#86cbf5 0%,#62b7ea 100%);color:#fff;padding:30px;border-radius:24px;max-width:700px;box-shadow:0 18px 36px rgba(36,95,132,.12)}
+    label{display:block;font-weight:800;margin:17px 0 6px}
+    input{display:block;width:100%;font-size:16px;padding:14px;border:1px solid #d3e8f5;border-radius:12px;color:var(--text)}
+    button.btn{margin-top:18px}
+    .success{background:#e5f7ea;color:#1b5b39;padding:17px;border-radius:12px;margin-top:16px}
+    footer{border-top:1px solid var(--line);padding:25px 0;font-size:14px;color:#577182}
+    footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media (max-width:760px){
+      .hero-grid,.cards{grid-template-columns:1fr}
+      .section{padding:34px 0}
+      .hero{padding-bottom:36px}
+      .price strong{font-size:35px}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="wrap">
+      <header class="head">
+        <div class="brand">Tail<span>Roster</span> 🐾</div>
+        <a href="#interest">Get early access</a>
+      </header>
+
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">For independent Irish dog daycares · 20–50 dogs a day</div>
+          <h1>Know who's coming. Keep every place accounted for.</h1>
+          <p class="lead">A simpler way to see daily capacity, flag vaccination dates and record a dog's day in one tap — built for busy dog daycare teams.</p>
+          <div class="cta-row">
+            <a class="btn accent" href="#interest">Join the waiting list</a>
+            <a class="btn line" href="https://laurenbacon122g.github.io/Waggy-Tails-Demo/" target="_blank" rel="noopener" id="demoLink">Try the demo ↗</a>
+          </div>
+          <p class="disclaimer">Working browser alpha available now. TailRoster is a proposed product, not a launched service.</p>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <svg class="dog-illu" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+            <rect x="35" y="35" width="190" height="150" rx="35" fill="#ffffff" opacity=".25"/>
+            <circle cx="130" cy="117" r="55" fill="#fff6ef"/>
+            <ellipse cx="85" cy="87" rx="22" ry="36" fill="#6b4b3b" transform="rotate(-18 85 87)"/>
+            <ellipse cx="174" cy="87" rx="22" ry="36" fill="#fff6ef" stroke="#6b4b3b" stroke-width="4" transform="rotate(18 174 87)"/>
+            <circle cx="109" cy="89" r="10" fill="#5c4134"/>
+            <circle cx="154" cy="111" r="12" fill="#d8a38c" opacity=".75"/>
+            <circle cx="111" cy="111" r="6" fill="#21313e"/>
+            <circle cx="149" cy="111" r="6" fill="#21313e"/>
+            <ellipse cx="130" cy="133" rx="12" ry="9" fill="#23323d"/>
+            <path d="M119 151c6 7 16 7 22 0" fill="none" stroke="#23323d" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="196" cy="55" r="8" fill="#fff" opacity=".55"/>
+            <circle cx="58" cy="51" r="6" fill="#fff" opacity=".45"/>
+            <path d="M54 190c24-24 50-18 76-8 18 8 36 9 60-4" fill="none" stroke="#ffffff" stroke-width="6" opacity=".45" stroke-linecap="round"/>
+          </svg>
+          <div class="hero-badges">
+            <span class="badge">🐶 Daycare bookings</span>
+            <span class="badge">💉 Vaccine checks</span>
+            <span class="badge">📱 One-tap notes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="kicker eyeblue">The daily headache</div>
+        <h2>WhatsApp isn't a booking system.</h2>
+        <div class="quote">“I have bookings in texts, Instagram and WhatsApp. Friday fills up before anyone notices, then I spend the day replying to owners asking for updates.”</div>
+        <p class="caption">Invented quote representing the selected niche, not a real customer testimonial.</p>
+        <p class="intro">For owner-operated daycares, it's easy for booking messages, vaccination paperwork and daily updates to get scattered across different places.</p>
+        <div class="pets-row" aria-hidden="true">
+          <span class="pet-chip">🐾 20–50 dogs a day</span>
+          <span class="pet-chip">📋 Small teams</span>
+          <span class="pet-chip">💬 Too many owner messages</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:#eff8fd">
+      <div class="wrap">
+        <div class="kicker eyeblue">How it works</div>
+        <h2>Three views. Less chasing.</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="num">1</div>
+            <h3>See places left</h3>
+            <p>Open the weekly booking view. The alpha caps days at 40 dogs and suggests another date when full.</p>
+          </article>
+          <article class="card">
+            <div class="num">2</div>
+            <h3>Check vaccines & tap</h3>
+            <p>See amber and red vaccination warnings. Check in eligible dogs and tap Ate, Walked, Played or Napped.</p>
+          </article>
+          <article class="card">
+            <div class="num">3</div>
+            <h3>Preview a Pupdate</h3>
+            <p>See one dog's activity notes for a selected day. Private owner accounts and live sharing are planned, not built.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="kicker eyeblue">Proposed pricing</div>
+        <h2>Simple pricing for small teams.</h2>
+        <div class="price">
+          <div class="tag">Pricing assumption · not available to purchase</div>
+          <p><strong>€59/month</strong></p>
+          <p>plus a once-off <strong style="font-size:26px">€149 set-up fee</strong></p>
+          <p class="intro">An assumed price designed to be approachable for an independent daycare and reflect potential time saved on manual administration. We have not tested willingness to pay.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="interest">
+      <div class="wrap">
+        <div class="formbox">
+          <div class="kicker">One call to action</div>
+          <h2>Interested in a calmer daycare desk?</h2>
+          <p>Join the proposed waiting list to show interest in TailRoster.</p>
+          <form id="waitlist">
+            <label for="business">Daycare name</label>
+            <input id="business" placeholder="Your daycare" required maxlength="100">
+            <label for="email">Work email</label>
+            <input id="email" type="email" placeholder="you@example.ie" required maxlength="150">
+            <button class="btn accent" type="submit">Join the waiting list</button>
+          </form>
+          <div id="thanks" class="success" role="status" hidden>Thank you! This is a demonstration only: your details were not sent or stored, and you have not joined a real waiting list.</div>
+          <p class="caption" style="color:#eef8ff">Demo form only. No data is submitted, saved or sent.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© TailRoster · Concept landing page · No real customers or endorsements claimed</span>
+      <a href="notes.html">Behind the build →</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('waitlist').addEventListener('submit', function(e){
+      e.preventDefault();
+      this.hidden = true;
+      document.getElementById('thanks').hidden = false;
+    });
+  </script>
+</body>
+</html>
